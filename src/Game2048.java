@@ -47,8 +47,32 @@ public class Game2048 {
 					else if (fin == 3) {
 						System.out.println("You lose!");
 					}
+				} else if (args[0].equals("Bot")) {
+					Bot bot = new Bot();
+					do {
+
+						fin = gameGrid.getFinishedCode();
+						gameGrid.update(iChar);
+						// draw it
+						gameGrid.ToString();
+						// get Char
+						iChar = bot.nextStep(gameGrid.gameGrid);
+						try {
+							Thread.sleep(300);
+						} catch (Exception e) {
+							// TODO: handle exception
+						}
+					} while (fin == 0);
+					// winning code
+					if (fin == 2) {
+						System.out.println("You win!");
+					}
+					// loosing code
+					else if (fin == 3) {
+						System.out.println("You lose!");
+					}
 				}
-				return;
+				
 		}
 
 		try {
